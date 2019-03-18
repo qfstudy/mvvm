@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+ <!-- １．不能连着写 ２．没有标签时两个内容都一样-->
+<body>
+  <div id="app">
+    {{obj.name1.test}} {{name}}
+    <p>{{name}}</p>
+    <p>{{obj.name1.test}}{{name}}</p>
+    <input type="text" v-model="c">
+  </div>
+  <script src="./self-mvvm.js"></script>
+  <!-- <script src="./test.js"></script> -->
+  <script>
+    let mvvm=new Mvvm({
+      el: '#app',
+      data: {
+        name: 'mvvm',
+        obj:{
+          name1: {
+            test: 'test'
+          }
+        },
+        c: 'model'
+      },
+      mounted () {
+        console.log('mounted')
+      },
+      computed: {
+        fn: function(){
+          console.log('computed')
+        }
+      }
+    })
+    // mvvm.name={nn:'sd'}
+    // console.log(mvvm.name,mvvm.obj.name1.test)
+  </script>
+</body>
+</html>
